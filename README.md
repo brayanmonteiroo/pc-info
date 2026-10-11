@@ -10,32 +10,62 @@ Mostra uso e temperatura da CPU e da placa de vídeo, memória e outras métrica
 - Qualquer distro Linux com GNOME (Fedora, Arch, Ubuntu, etc.)
 - Coleta via `/proc` e `/sys` (sem depender de pacotes da distro)
 
-## Instalação (desenvolvimento)
+## Desenvolvimento (sem sair da sessão)
+
+No Wayland **não dá** para reiniciar o GNOME Shell da sessão principal sem logout. A prática oficial do GNOME é usar uma **sessão nested**: um GNOME Shell numaj anela, isolado via D-Bus.
+
+Referência: [Debugging extensions (gjs.guide)](https://gjs.guide/extensions/development/debugging.html).
+
+### Fluxo rápido
 
 ```bash
-make install
-# Em Wayland a sessão precisa recarregar para descobrir a extensão nova:
-# saia e entre de novo, ou use a sessão nested abaixo.
-gnome-extensions enable pc-info@brayanmonteiroo.github.io
+make nested
 ```
 
-`make install` **copia** os arquivos (não usa symlink), para não apagar o repositório se o `gnome-extensions install` substituir o diretório.
+Isso:
 
-Em Wayland, teste numa sessão aninhada (recomendado):
+1. Compila os schemas
+2. Cria um **symlink** do repo em `~/.local/share/gnome-shell/extensions/`
+3. Abre um GNOME Shell nested (`--devkit` no GNOME 49+)
+
+Dentro da janela nested (abra um terminal lá):
 
 ```bash
-dbus-run-session gnome-shell --devkit --wayland
-# dentro da sessão nested:
 gnome-extensions enable pc-info@brayanmonteiroo.github.io
-```
-
-Abra as preferências:
-
-```bash
 gnome-extensions prefs pc-info@brayanmonteiroo.github.io
 ```
 
-Após alterar o código, rode `make install` de novo e recarregue a extensão (ou a sessão nested).
+Depois de editar o código:
+
+1. **Feche** a janela nested  
+2. Rode `make nested` de novo  
+
+Não precisa sair da sua sessão principal. O symlink faz o nested ler o código do repo direto (sem `make install` a cada mudança).
+
+### Por que não hot-reload?
+
+O motor JavaScript do Shell **não descarrega** módulos. Qualquer mudança em `extension.js` / `lib/` exige um **novo processo** `gnome-shell`. Nested = processo novo em segundos. Logout = a mesma ideia, só que pior.
+
+### Prefs
+
+`prefs.js` roda em **outro processo**. Em geral basta fechar e abrir as preferências de novo — sem reiniciar o Shell.
+
+### Logs
+
+No terminal onde rodou `make nested`:
+
+```bash
+# já exporta SHELL_DEBUG=backtrace-warnings no script
+journalctl --user -f -o cat /usr/bin/gnome-shell   # sessão principal
+```
+
+### Instalação “cópia” (uso normal, não iteração)
+
+```bash
+make install
+```
+
+Copia os arquivos (não usa symlink). Use isso se for usar `gnome-extensions install` com ZIP — **não** misture com o symlink do `make nested`.
 
 ## Empacotar
 
@@ -43,22 +73,16 @@ Após alterar o código, rode `make install` de novo e recarregue a extensão (o
 make pack
 ```
 
-Gera `pc-info@brayanmonteiroo.github.io.zip` para upload em [extensions.gnome.org](https://extensions.gnome.org/).
+Gera `pc-info@brayanmonteiroo.github.io.zip` para [extensions.gnome.org](https://extensions.gnome.org/).
 
-## Publicar o repositório no GitHub
-
-Com o remote `origin` apontando para `git@github.com:brayanmonteiroo/pc-info.git`:
+## Publicar no GitHub
 
 ```bash
-gh auth login   # se ainda não autenticou a API
+gh auth login
 gh repo create brayanmonteiroo/pc-info --public --source=. --remote=origin --push
 ```
 
-Ou crie o repositório vazio em https://github.com/new e depois:
-
-```bash
-git push -u origin main
-```
+Ou crie o repo vazio e: `git push -u origin main`.
 
 ## Licença
 
