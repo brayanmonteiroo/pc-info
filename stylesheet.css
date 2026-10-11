@@ -19,6 +19,11 @@
   margin: 0;
 }
 
+/* Tabular figures help digit padding keep a steady width. */
+.pc-info-fixed {
+  font-feature-settings: "tnum";
+}
+
 .pc-info-cpu {
   color: #6cb6ff;
 }
