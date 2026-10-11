@@ -43,6 +43,14 @@
   color: #70d0c8;
 }
 
+/* Stable width for up/down rates — avoids panel jitter when values grow. */
+.pc-info-rate {
+  font-family: monospace;
+  font-feature-settings: "tnum";
+  min-width: 8.2em;
+  text-align: end;
+}
+
 .pc-info-disk {
   color: #d0c070;
 }
