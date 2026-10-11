@@ -12,7 +12,7 @@ Mostra uso e temperatura da CPU e da placa de vídeo, memória e outras métrica
 
 ## Desenvolvimento (sem sair da sessão)
 
-No Wayland **não dá** para reiniciar o GNOME Shell da sessão principal sem logout. A prática oficial do GNOME é usar uma **sessão nested**: um GNOME Shell numaj anela, isolado via D-Bus.
+No Wayland **não dá** para reiniciar o GNOME Shell da sessão principal sem logout. A prática oficial do GNOME é usar uma **sessão nested**: um GNOME Shell numa janela, isolado via D-Bus.
 
 Referência: [Debugging extensions (gjs.guide)](https://gjs.guide/extensions/development/debugging.html).
 
