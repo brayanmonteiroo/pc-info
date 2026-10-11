@@ -18,14 +18,23 @@ Referência: [Debugging extensions (gjs.guide)](https://gjs.guide/extensions/dev
 
 ### Fluxo rápido
 
+Sem `make` instalado:
+
 ```bash
+./scripts/nested-shell.sh
+```
+
+Com `make`:
+
+```bash
+sudo dnf install make   # uma vez
 make nested
 ```
 
 Isso:
 
 1. Compila os schemas
-2. Cria um **symlink** do repo em `~/.local/share/gnome-shell/extensions/`
+2. **Remove** qualquer cópia antiga e cria um **symlink** do repo em `~/.local/share/gnome-shell/extensions/`
 3. Abre um GNOME Shell nested (`--devkit` no GNOME 49+)
 
 Dentro da janela nested (abra um terminal lá):
