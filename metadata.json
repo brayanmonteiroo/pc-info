@@ -1,0 +1,9 @@
+{
+  "uuid": "pc-info@brayanmonteiroo.github.io",
+  "name": "PC Info",
+  "description": "Mostra indicadores compactos na barra superior: uso e temperatura da CPU e da placa de vídeo, memória e outras métricas.\n\nNas preferências, escolha apenas o que deseja exibir — com nomes claros, sem termos técnicos de sensores.",
+  "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
+  "url": "https://github.com/brayanmonteiroo/pc-info",
+  "settings-schema": "org.gnome.shell.extensions.pc-info",
+  "gettext-domain": "pc-info@brayanmonteiroo.github.io"
+}

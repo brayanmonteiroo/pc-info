@@ -1,0 +1,56 @@
+.pc-info-box {
+  spacing: 8px;
+}
+
+.pc-info-cell {
+  spacing: 3px;
+}
+
+.pc-info-icon {
+  padding: 0;
+  margin: 0;
+  icon-size: 14px;
+}
+
+.pc-info-value {
+  font-size: 0.95em;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+
+.pc-info-cpu {
+  color: #6cb6ff;
+}
+
+.pc-info-temp {
+  color: #f0a060;
+}
+
+.pc-info-gpu {
+  color: #c090f0;
+}
+
+.pc-info-ram {
+  color: #6fdc8c;
+}
+
+.pc-info-net {
+  color: #70d0c8;
+}
+
+.pc-info-disk {
+  color: #d0c070;
+}
+
+.pc-info-swap {
+  color: #a0a8b8;
+}
+
+.pc-info-freq {
+  color: #8eb4e8;
+}
+
+.pc-info-disk-act {
+  color: #d0a070;
+}

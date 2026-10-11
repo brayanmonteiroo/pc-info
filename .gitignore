@@ -1,0 +1,6 @@
+*.zip
+schemas/gschemas.compiled
+.DS_Store
+*~
+*.swp
+probe.mjs

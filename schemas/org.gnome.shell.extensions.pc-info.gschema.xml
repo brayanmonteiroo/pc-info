@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.pc-info" path="/org/gnome/shell/extensions/pc-info/">
+    <key name="show-cpu-usage" type="b">
+      <default>true</default>
+      <summary>Show CPU usage</summary>
+    </key>
+    <key name="show-cpu-temp" type="b">
+      <default>true</default>
+      <summary>Show CPU temperature</summary>
+    </key>
+    <key name="show-gpu-usage" type="b">
+      <default>true</default>
+      <summary>Show GPU usage</summary>
+    </key>
+    <key name="show-gpu-temp" type="b">
+      <default>true</default>
+      <summary>Show GPU temperature</summary>
+    </key>
+    <key name="show-memory" type="b">
+      <default>true</default>
+      <summary>Show memory usage</summary>
+    </key>
+    <key name="show-network" type="b">
+      <default>false</default>
+      <summary>Show network speed</summary>
+    </key>
+    <key name="show-disk-space" type="b">
+      <default>false</default>
+      <summary>Show disk space</summary>
+    </key>
+    <key name="show-swap" type="b">
+      <default>false</default>
+      <summary>Show swap usage</summary>
+    </key>
+    <key name="show-cpu-freq" type="b">
+      <default>false</default>
+      <summary>Show CPU frequency</summary>
+    </key>
+    <key name="show-disk-activity" type="b">
+      <default>false</default>
+      <summary>Show disk activity</summary>
+    </key>
+  </schema>
+</schemalist>
