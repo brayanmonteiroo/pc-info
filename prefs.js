@@ -41,6 +41,7 @@ export default class PcInfoPreferences extends ExtensionPreferences {
           Gio.SettingsBindFlags.DEFAULT
         );
       } else {
+        settings.set_boolean(metric.key, false);
         row.active = false;
       }
 
