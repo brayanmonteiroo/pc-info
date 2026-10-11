@@ -58,3 +58,14 @@
 .pc-info-disk-act {
   color: #d0a070;
 }
+
+.pc-info-tooltip {
+  background-color: rgba(24, 24, 27, 0.96);
+  color: #f4f4f5;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.95em;
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  max-width: 280px;
+}

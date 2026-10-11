@@ -11,10 +11,8 @@ schemas:
 # Development: symlink the repo (edit → close nested window → reopen nested).
 # Do NOT run `gnome-extensions install` while using the symlink.
 link: schemas
-	mkdir -p "$(EXTENSIONS_DIR)"
-	ln -sfn "$(CURDIR)" "$(INSTALL_DIR)"
-	@echo "Linked $(INSTALL_DIR) -> $(CURDIR)"
-	@echo "Next: make nested"
+	@./scripts/link-extension.sh
+	@echo "Next: ./scripts/nested-shell.sh   (or: make nested)"
 
 # Nested GNOME Shell — official Wayland workflow (no logout).
 nested: link
