@@ -47,9 +47,19 @@ gnome-extensions prefs pc-info@brayanmonteiroo.github.io
 Depois de editar o código:
 
 1. **Feche** a janela nested  
-2. Rode `make nested` de novo  
+2. Rode `./scripts/nested-shell.sh` de novo  
 
 Não precisa sair da sua sessão principal. O symlink faz o nested ler o código do repo direto (sem `make install` a cada mudança).
+
+**Importante:** a barra da sessão principal **não** atualiza sozinha. Hover/tooltips novos só aparecem nela depois de **sair e entrar** uma vez (ou teste sempre na nested).
+
+No Fedora 41+/GNOME 49+, instale o devkit:
+
+```bash
+sudo dnf install mutter-devkit
+```
+
+Sem isso o nested loga `Failed to launch devkit` e a janela pode não servir para testar.
 
 ### Por que não hot-reload?
 
