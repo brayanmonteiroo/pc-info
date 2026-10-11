@@ -29,6 +29,7 @@ export default class PcInfoPreferences extends ExtensionPreferences {
       const row = new Adw.SwitchRow({
         title: metric.title,
         subtitle: available ? metric.subtitle : UNAVAILABLE_SUBTITLE,
+        icon_name: metric.icon,
         active: available && settings.get_boolean(metric.key),
         sensitive: available
       });

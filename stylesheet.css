@@ -31,6 +31,10 @@
   color: #c090f0;
 }
 
+.pc-info-gpu-temp {
+  color: #e080b0;
+}
+
 .pc-info-ram {
   color: #6fdc8c;
 }
