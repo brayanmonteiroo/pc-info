@@ -67,7 +67,6 @@ echo "==> Compiling schemas and packing"
 
 echo "==> Verifying ZIP contents"
 mapfile -t entries < <(unzip -Z1 "$ZIP" | sort)
-# gnome-extensions pack ships the schema XML; gschemas.compiled is generated on install.
 required_entries=(
   "metadata.json"
   "extension.js"
@@ -75,6 +74,7 @@ required_entries=(
   "stylesheet.css"
   "LICENSE"
   "schemas/org.gnome.shell.extensions.pc-info.gschema.xml"
+  "schemas/gschemas.compiled"
 )
 
 missing=0

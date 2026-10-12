@@ -61,7 +61,7 @@ O JS do Shell não faz hot-reload: cada mudança exige um processo novo — o ne
 # ou: make pack
 ```
 
-Gera `pc-info@brayanmonteiroo.github.io.zip` para [extensions.gnome.org](https://extensions.gnome.org/). Inclui schemas e traduções compiladas (`locale/`), sem fontes `.po`.
+Gera `pc-info@brayanmonteiroo.github.io.zip` para [extensions.gnome.org](https://extensions.gnome.org/). Inclui schemas, `gschemas.compiled` e traduções (`locale/*.mo`), sem fontes `.po`.
 
 ### Traduções
 
