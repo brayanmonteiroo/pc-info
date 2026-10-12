@@ -8,6 +8,7 @@ cd "$ROOT"
 UUID="pc-info@brayanmonteiroo.github.io"
 ZIP="${UUID}.zip"
 SCHEMA="schemas/org.gnome.shell.extensions.pc-info.gschema.xml"
+DOMAIN="$UUID"
 
 echo "==> Validating metadata.json"
 python3 - <<'PY'
@@ -24,6 +25,7 @@ required = {
     "description": str,
     "shell-version": list,
     "settings-schema": "org.gnome.shell.extensions.pc-info",
+    "gettext-domain": "pc-info@brayanmonteiroo.github.io",
 }
 
 for key, expected in required.items():
@@ -44,33 +46,28 @@ if not shell_versions or not all(isinstance(v, str) for v in shell_versions):
     print("ERROR: shell-version must be a non-empty list of strings", file=sys.stderr)
     sys.exit(1)
 
-version = data.get("version")
-if version is not None and not isinstance(version, int):
-    print("ERROR: version must be an integer when present", file=sys.stderr)
+if "version" in data:
+    print(
+        "ERROR: do not set metadata version; EGO owns that field",
+        file=sys.stderr,
+    )
     sys.exit(1)
 
 print("OK: metadata.json")
 PY
 
-echo "==> Checking schema file"
+echo "==> Checking schema and translation sources"
 test -f "$SCHEMA"
+test -f "po/${DOMAIN}.pot"
+test -f "po/pt_BR.po"
+test -f "po/pt.po"
 
 echo "==> Compiling schemas and packing"
-glib-compile-schemas schemas/
-rm -f "$ZIP"
-zip -r "$ZIP" \
-  metadata.json \
-  extension.js \
-  prefs.js \
-  stylesheet.css \
-  LICENSE \
-  schemas/org.gnome.shell.extensions.pc-info.gschema.xml \
-  schemas/gschemas.compiled \
-  lib/*.js
-echo "Created $ZIP"
+./scripts/pack-extension.sh
 
 echo "==> Verifying ZIP contents"
 mapfile -t entries < <(unzip -Z1 "$ZIP" | sort)
+# gnome-extensions pack ships the schema XML; gschemas.compiled is generated on install.
 required_entries=(
   "metadata.json"
   "extension.js"
@@ -78,7 +75,6 @@ required_entries=(
   "stylesheet.css"
   "LICENSE"
   "schemas/org.gnome.shell.extensions.pc-info.gschema.xml"
-  "schemas/gschemas.compiled"
 )
 
 missing=0
@@ -91,6 +87,16 @@ done
 
 if ! printf '%s\n' "${entries[@]}" | grep -Eq '^lib/.+\.js$'; then
   echo "ERROR: ZIP has no lib/*.js modules" >&2
+  missing=1
+fi
+
+if ! printf '%s\n' "${entries[@]}" | grep -Eq "^locale/.+/LC_MESSAGES/${DOMAIN}\\.mo$"; then
+  echo "ERROR: ZIP has no compiled locale .mo files" >&2
+  missing=1
+fi
+
+if printf '%s\n' "${entries[@]}" | grep -Eq '\.po$|\.pot$'; then
+  echo "ERROR: ZIP must not include .po/.pot sources" >&2
   missing=1
 fi
 

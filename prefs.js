@@ -1,7 +1,10 @@
 import Adw from "gi://Adw";
 import Gio from "gi://Gio";
 
-import {ExtensionPreferences} from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
+import {
+  ExtensionPreferences,
+  gettext as _
+} from "resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js";
 
 import {probeAvailability} from "./lib/availability.js";
 import {METRIC_DEFS, UNAVAILABLE_SUBTITLE} from "./lib/labels.js";
@@ -15,20 +18,20 @@ export default class PcInfoPreferences extends ExtensionPreferences {
     const availability = probeAvailability();
 
     const page = new Adw.PreferencesPage({
-      title: "Geral",
+      title: _("General"),
       icon_name: "preferences-system-symbolic"
     });
 
     const group = new Adw.PreferencesGroup({
-      title: "Mostrar na barra superior",
-      description: "Escolha o que aparece na barra superior."
+      title: _("Show on the top bar"),
+      description: _("Choose what appears on the top bar.")
     });
 
     for (const metric of METRIC_DEFS) {
       const available = availability[metric.id] !== false;
       const row = new Adw.SwitchRow({
-        title: metric.title,
-        subtitle: available ? metric.subtitle : UNAVAILABLE_SUBTITLE,
+        title: _(metric.title),
+        subtitle: available ? _(metric.subtitle) : _(UNAVAILABLE_SUBTITLE),
         icon_name: metric.icon,
         active: available && settings.get_boolean(metric.key),
         sensitive: available

@@ -57,10 +57,21 @@ O JS do Shell não faz hot-reload: cada mudança exige um processo novo — o ne
 ### Empacotar (EGO)
 
 ```bash
-make pack
+./scripts/pack-extension.sh
+# ou: make pack
 ```
 
-Gera `pc-info@brayanmonteiroo.github.io.zip` para [extensions.gnome.org](https://extensions.gnome.org/). (Requer `make` e `zip`.)
+Gera `pc-info@brayanmonteiroo.github.io.zip` para [extensions.gnome.org](https://extensions.gnome.org/). Inclui schemas e traduções compiladas (`locale/`), sem fontes `.po`.
+
+### Traduções
+
+- Strings no código em **inglês** (msgid)
+- `po/pt_BR.po` e `po/pt.po` para português
+- Outros idiomas usam o inglês automaticamente
+
+```bash
+./scripts/compile-locales.sh   # gera locale/ para o symlink local
+```
 
 ### CI
 

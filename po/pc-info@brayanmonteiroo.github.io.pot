@@ -1,0 +1,121 @@
+# PC Info translation template.
+# Copyright (C) 2026 Brayan Monteiro
+# This file is distributed under the same license as the PC Info package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PC Info 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/brayanmonteiroo/pc-info/issues\n"
+"POT-Creation-Date: 2026-10-11 21:00-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: prefs.js:21
+msgid "General"
+msgstr ""
+
+#: prefs.js:26
+msgid "Show on the top bar"
+msgstr ""
+
+#: prefs.js:27
+msgid "Choose what appears on the top bar."
+msgstr ""
+
+#: lib/labels.js:16
+msgid "CPU usage"
+msgstr ""
+
+#: lib/labels.js:17
+msgid "Processor usage percentage"
+msgstr ""
+
+#: lib/labels.js:24
+msgid "CPU temperature"
+msgstr ""
+
+#: lib/labels.js:25
+msgid "Processor temperature"
+msgstr ""
+
+#: lib/labels.js:32
+msgid "GPU usage"
+msgstr ""
+
+#: lib/labels.js:33
+msgid "Graphics card usage percentage"
+msgstr ""
+
+#: lib/labels.js:40
+msgid "GPU temperature"
+msgstr ""
+
+#: lib/labels.js:41
+msgid "Graphics card temperature"
+msgstr ""
+
+#: lib/labels.js:48
+msgid "Memory usage"
+msgstr ""
+
+#: lib/labels.js:49
+msgid "Memory usage percentage"
+msgstr ""
+
+#: lib/labels.js:56
+msgid "Network speed"
+msgstr ""
+
+#: lib/labels.js:57
+msgid "Live download and upload rates"
+msgstr ""
+
+#: lib/labels.js:64
+msgid "Disk space"
+msgstr ""
+
+#: lib/labels.js:65
+msgid "Used space on the main disk"
+msgstr ""
+
+#: lib/labels.js:67
+msgid "root filesystem (/)"
+msgstr ""
+
+#: lib/labels.js:72
+msgid "Virtual memory usage"
+msgstr ""
+
+#: lib/labels.js:73
+msgid "Virtual memory (swap) usage percentage"
+msgstr ""
+
+#: lib/labels.js:80
+msgid "CPU frequency"
+msgstr ""
+
+#: lib/labels.js:81
+msgid "Current processor frequency"
+msgstr ""
+
+#: lib/labels.js:88
+msgid "Disk activity"
+msgstr ""
+
+#: lib/labels.js:89
+msgid "Disk read and write rates"
+msgstr ""
+
+#: lib/labels.js:95
+msgid "Not available on this computer"
+msgstr ""
+
+#: lib/labels.js:97
+#, javascript-format
+msgid "Source: %s"
+msgstr ""

@@ -1,0 +1,122 @@
+# Brazilian Portuguese translation for PC Info.
+# Copyright (C) 2026 Brayan Monteiro
+# This file is distributed under the same license as the PC Info package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PC Info 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/brayanmonteiroo/pc-info/issues\n"
+"POT-Creation-Date: 2026-10-11 21:00-0300\n"
+"PO-Revision-Date: 2026-10-11 21:00-0300\n"
+"Last-Translator: Brayan Monteiro <brayanmonteirooo@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: prefs.js:21
+msgid "General"
+msgstr "Geral"
+
+#: prefs.js:26
+msgid "Show on the top bar"
+msgstr "Mostrar na barra superior"
+
+#: prefs.js:27
+msgid "Choose what appears on the top bar."
+msgstr "Escolha o que aparece na barra superior."
+
+#: lib/labels.js:16
+msgid "CPU usage"
+msgstr "Uso da CPU"
+
+#: lib/labels.js:17
+msgid "Processor usage percentage"
+msgstr "Porcentagem de uso do processador"
+
+#: lib/labels.js:24
+msgid "CPU temperature"
+msgstr "Temperatura da CPU"
+
+#: lib/labels.js:25
+msgid "Processor temperature"
+msgstr "Temperatura do processador"
+
+#: lib/labels.js:32
+msgid "GPU usage"
+msgstr "Uso da placa de vídeo"
+
+#: lib/labels.js:33
+msgid "Graphics card usage percentage"
+msgstr "Porcentagem de uso da placa de vídeo"
+
+#: lib/labels.js:40
+msgid "GPU temperature"
+msgstr "Temperatura da placa de vídeo"
+
+#: lib/labels.js:41
+msgid "Graphics card temperature"
+msgstr "Temperatura da placa de vídeo"
+
+#: lib/labels.js:48
+msgid "Memory usage"
+msgstr "Uso da memória"
+
+#: lib/labels.js:49
+msgid "Memory usage percentage"
+msgstr "Porcentagem de memória em uso"
+
+#: lib/labels.js:56
+msgid "Network speed"
+msgstr "Velocidade da rede"
+
+#: lib/labels.js:57
+msgid "Live download and upload rates"
+msgstr "Download e upload em tempo real"
+
+#: lib/labels.js:64
+msgid "Disk space"
+msgstr "Espaço do disco"
+
+#: lib/labels.js:65
+msgid "Used space on the main disk"
+msgstr "Espaço usado no disco principal"
+
+#: lib/labels.js:67
+msgid "root filesystem (/)"
+msgstr "sistema de arquivos /"
+
+#: lib/labels.js:72
+msgid "Virtual memory usage"
+msgstr "Uso da memória virtual"
+
+#: lib/labels.js:73
+msgid "Virtual memory (swap) usage percentage"
+msgstr "Porcentagem de memória virtual (swap) em uso"
+
+#: lib/labels.js:80
+msgid "CPU frequency"
+msgstr "Frequência da CPU"
+
+#: lib/labels.js:81
+msgid "Current processor frequency"
+msgstr "Frequência atual do processador"
+
+#: lib/labels.js:88
+msgid "Disk activity"
+msgstr "Atividade do disco"
+
+#: lib/labels.js:89
+msgid "Disk read and write rates"
+msgstr "Leitura e escrita do disco"
+
+#: lib/labels.js:95
+msgid "Not available on this computer"
+msgstr "Não disponível neste computador"
+
+#: lib/labels.js:97
+#, javascript-format
+msgid "Source: %s"
+msgstr "Fonte: %s"

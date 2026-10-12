@@ -1,5 +1,6 @@
 *.zip
 schemas/gschemas.compiled
+locale/
 .DS_Store
 *~
 *.swp

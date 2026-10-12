@@ -3,14 +3,17 @@ EXTENSIONS_DIR := $(HOME)/.local/share/gnome-shell/extensions
 INSTALL_DIR := $(EXTENSIONS_DIR)/$(UUID)
 ZIP := $(UUID).zip
 
-.PHONY: schemas link install uninstall pack clean nested reload-help ci
+.PHONY: schemas locales link install uninstall pack clean nested reload-help ci
 
 schemas:
 	glib-compile-schemas schemas/
 
+locales:
+	@./scripts/compile-locales.sh
+
 # Development: symlink the repo (edit → close nested window → reopen nested).
 # Do NOT run `gnome-extensions install` while using the symlink.
-link: schemas
+link: schemas locales
 	@./scripts/link-extension.sh
 	@echo "Next: ./scripts/nested-shell.sh   (or: make nested)"
 
@@ -19,12 +22,13 @@ nested: link
 	@./scripts/nested-shell.sh
 
 # Copy install for “production-like” local use (not for rapid iteration).
-install: schemas
+install: schemas locales
 	rm -rf "$(INSTALL_DIR)"
-	mkdir -p "$(INSTALL_DIR)/lib" "$(INSTALL_DIR)/schemas"
+	mkdir -p "$(INSTALL_DIR)/lib" "$(INSTALL_DIR)/schemas" "$(INSTALL_DIR)/locale"
 	cp metadata.json extension.js prefs.js stylesheet.css LICENSE "$(INSTALL_DIR)/"
 	cp lib/*.js "$(INSTALL_DIR)/lib/"
 	cp schemas/org.gnome.shell.extensions.pc-info.gschema.xml schemas/gschemas.compiled "$(INSTALL_DIR)/schemas/"
+	cp -a locale/. "$(INSTALL_DIR)/locale/"
 	@echo "Installed copy to $(INSTALL_DIR)"
 
 uninstall:
@@ -32,17 +36,7 @@ uninstall:
 	@echo "Removed $(INSTALL_DIR)"
 
 pack: schemas
-	rm -f "$(ZIP)"
-	zip -r "$(ZIP)" \
-		metadata.json \
-		extension.js \
-		prefs.js \
-		stylesheet.css \
-		LICENSE \
-		schemas/org.gnome.shell.extensions.pc-info.gschema.xml \
-		schemas/gschemas.compiled \
-		lib/*.js
-	@echo "Created $(ZIP)"
+	@./scripts/pack-extension.sh
 
 # Lightweight package checks (same as GitHub Actions CI).
 ci:
@@ -50,6 +44,7 @@ ci:
 
 clean:
 	rm -f "$(ZIP)"
+	rm -rf locale/
 
 reload-help:
 	@echo "Wayland (recomendado):"

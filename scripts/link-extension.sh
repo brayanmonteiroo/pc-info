@@ -8,6 +8,7 @@ EXTENSIONS_DIR="${HOME}/.local/share/gnome-shell/extensions"
 INSTALL_DIR="${EXTENSIONS_DIR}/${UUID}"
 
 glib-compile-schemas "${ROOT}/schemas"
+"${ROOT}/scripts/compile-locales.sh"
 mkdir -p "${EXTENSIONS_DIR}"
 
 # If INSTALL_DIR is an existing directory, `ln -sfn TARGET DIR` creates
