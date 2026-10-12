@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Schema, pack, syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libglib2.0-bin \
+            zip \
+            unzip
+
+      - name: Run CI checks
+        run: ./scripts/ci-check.sh
+
+      - name: Upload extension ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: pc-info@brayanmonteiroo.github.io
+          path: pc-info@brayanmonteiroo.github.io.zip
+          if-no-files-found: error

@@ -62,6 +62,17 @@ make pack
 
 Gera `pc-info@brayanmonteiroo.github.io.zip` para [extensions.gnome.org](https://extensions.gnome.org/). (Requer `make` e `zip`.)
 
+### CI
+
+No GitHub Actions (e localmente):
+
+```bash
+./scripts/ci-check.sh
+# ou: make ci
+```
+
+Valida `metadata.json`, compila schemas, gera o ZIP e confere o conteúdo + sintaxe JS. Releases a partir da tag `v*` publicam o ZIP automaticamente.
+
 ## Licença
 
 **GPL-3.0-or-later** — veja [LICENSE](LICENSE).

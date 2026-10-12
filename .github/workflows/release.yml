@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libglib2.0-bin \
+            zip \
+            unzip
+
+      - name: Run CI checks
+        run: ./scripts/ci-check.sh
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          gh release create "$tag" \
+            "pc-info@brayanmonteiroo.github.io.zip" \
+            --title "PC Info ${tag}" \
+            --notes "$(cat <<EOF
+          ## PC Info ${tag}
+
+          Extensão GNOME Shell com indicadores na barra superior (CPU, GPU, memória, rede, disco e extras).
+
+          ### Instalação rápida
+          1. Baixe \`pc-info@brayanmonteiroo.github.io.zip\`
+          2. Instale com Extensões / \`gnome-extensions install\`
+          3. Ative \`pc-info@brayanmonteiroo.github.io\`
+
+          Compatível com GNOME Shell 45–51.
+          EOF
+          )"

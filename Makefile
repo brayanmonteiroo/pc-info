@@ -3,7 +3,7 @@ EXTENSIONS_DIR := $(HOME)/.local/share/gnome-shell/extensions
 INSTALL_DIR := $(EXTENSIONS_DIR)/$(UUID)
 ZIP := $(UUID).zip
 
-.PHONY: schemas link install uninstall pack clean nested reload-help
+.PHONY: schemas link install uninstall pack clean nested reload-help ci
 
 schemas:
 	glib-compile-schemas schemas/
@@ -43,6 +43,10 @@ pack: schemas
 		schemas/gschemas.compiled \
 		lib/*.js
 	@echo "Created $(ZIP)"
+
+# Lightweight package checks (same as GitHub Actions CI).
+ci:
+	@./scripts/ci-check.sh
 
 clean:
 	rm -f "$(ZIP)"
